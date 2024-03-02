@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .booking-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            height: auto;
+            padding: 30px;
+        }
+
+        .booking-card h3 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 30px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .details-form form {
+            max-width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            /* border-radius: 50%;  */
+            padding: 10px; /* Adjust padding for smaller size */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 96px; /* Set a fixed width */
+            height: 50px; /* Set a fixed height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto; /* Center the button */
+        }
+        button[type="submit"]:hover {
+            background-color: #e29cc1;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 20px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Session</title>
+</head>
+<body>
+    <section id="booking" class="booking">
+        <div class="container">
+            <div class="row">
+                <!-- Details Form -->
+                <div class="col-lg-12">
+                    <div class="booking-card">
+                        <h3>Book Your Session</h3>
+                        <!-- Details form -->
+                        <form id="booking-details-form" onsubmit="return validateForm()">
+                            <!-- Details inputs -->
+                            <div class="form-group">
+                                <label for="name">Full Name:</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date:</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Select Service:</label>
+                                <select id="service" name="service" required>
+                                    <option value="">Select a service</option>
+                                    <option value="Beard Styling">Hair Cutting</option>
+                                    <option value="Beard Styling">Hair Colouring</option>
+                                    <option value="Hair Styling">Hair Styling</option>
+                                    <option value="Beard Styling">Beard Styling</option>
+                                    <option value="Beard Styling">Massage</option>
+                                    <option value="Beard Styling">Makeup Application</option>
+                                    <option value="Beard Styling">Manicure & Padicure</option>
+                                    <option value="Beard Styling">Nail Art</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Add Your Needs</label>
+                                <input type="text" id="text" name="add" placeholder="Any more Services if wanted" required>
+                            </div>
+                            <button type="submit">Book Now</button> <!-- Unicode character for a plus sign -->
+                            <p id="success-message" class="success-message" style="display: none;">Thank you! Your booking has been confirmed.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var date = document.getElementById('date').value;
+            var service = document.getElementById('service').value;
+
+            if (name === '' || email === '' || phone === '' || date === '' || service === '') {
+                alert('Please fill in all fields.');
+                return false;
+            } else {
+                document.getElementById('success-message').style.display = 'block';
+                setTimeout(function() {
+                    window.location.href = '/'; // Redirect to home page after 3 seconds
+                }, 3000);
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
